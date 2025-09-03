@@ -25,7 +25,7 @@ for (let i = 0; i < data.length; i++){
 }
 
 
-console.log(`Part 1- \nCell 1: ${cell1}, \nCell 2: ${cell2}, \nCell 3: ${cell3}, \nCell 4: ${cell4}`);
+console.log(`Part 1\nCell 1: ${cell1}, \nCell 2: ${cell2}, \nCell 3: ${cell3}, \nCell 4: ${cell4}`);
 
 // Part 2: Expanding Functionality
 let dataArray = []; // All data
@@ -51,7 +51,7 @@ for (let i = 0; i < data.length; i++){
     }
 }
 
-console.log("Part 2-");
+console.log("Part 2");
 for (const row of dataArray){
     console.log(row);
 }
@@ -67,12 +67,14 @@ for(let i = 1; i < dataArray.length; i++){
     objectArray.push(tempObj);
 }
 
-console.log("Part 3-");
+console.log("Part 3");
+// Print by row to show current state of objectArray before any changes
 for (const row of objectArray){
     console.log(row);
 }
 
 // Part 4: Sorting and Manipulating Data
+
 // Remove last element
 objectArray.splice(-1, 1);
 
@@ -82,10 +84,22 @@ objectArray.splice(1, 0, {id: "48", name: "Barry", occupation: "Runner", age: "2
 // Add at the end of the array
 objectArray.push({id: "7", name: "Bilbo", occupation: "None", age: "111"});
 
-console.log("Part 4-");
+// Calculate the average age of the group
+let totalAge = 0;
 for (const row of objectArray){
-    console.log(row);
+    for (const key in row){
+        console.log(typeof key);
+        if (key === "age"){
+            totalAge += Number(row[key]);
+        }
+    }
 }
+
+const averageAge = totalAge/objectArray.length;
+
+console.log("Part 4");
+console.log(objectArray);
+console.log(`Average Age: ${averageAge}`);
 
 // Part 5: Full Circle (Convert back to csv format)
 let dataCSV = "";
@@ -115,4 +129,4 @@ for(let i = 0; i < objectArray.length; i++){
     dataCSV += (tempRowArray.join(",") + "\n");
 }
 
-console.log(`Part 5 - dataCSV:\n${dataCSV}`);
+console.log(`Part 5\n${dataCSV}`);
