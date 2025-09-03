@@ -1,12 +1,15 @@
 // Part 1: Refactor
 const data = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26"
 
-let cell1 = "", cell2 = "", cell3 = "", cell4 = "";
+let header = "", cell1 = "", cell2 = "", cell3 = "", cell4 = "";
 
 let rowCount = 0, text = "";
 
 for (let i = 0; i < data.length; i++){
-    if (data[i] == "\n"){
+    if (data[i] == "\n"){ // Handle new row
+        if (rowCount == 0) {
+            header += text;
+        }
         if (rowCount == 1) {
             cell1 += text;
         } else if (rowCount == 2) {
@@ -16,7 +19,7 @@ for (let i = 0; i < data.length; i++){
         }
         text = "";
         rowCount++;
-    } else if (rowCount > 0) {
+    } else { // Add character for row into 'text'
         text += data[i];
     }
     if (i == data.length-1){ // Add remaining text to last cell if this is the last character of the data.
@@ -24,8 +27,7 @@ for (let i = 0; i < data.length; i++){
     }
 }
 
-
-console.log(`Part 1\nCell 1: ${cell1}, \nCell 2: ${cell2}, \nCell 3: ${cell3}, \nCell 4: ${cell4}`);
+console.log(`Part 1\nHeader: ${header}\nCell 1: ${cell1}, \nCell 2: ${cell2}, \nCell 3: ${cell3}, \nCell 4: ${cell4}`);
 
 // Part 2: Expanding Functionality
 let dataArray = []; // All data
