@@ -60,11 +60,11 @@ for (const row of dataArray){
 let objectArray = [];
 
 for(let i = 1; i < dataArray.length; i++){
-    let tempObjArray = [];
+    let tempObj = {};
     for(let j = 0; j < dataArray[i].length; j++){
-        tempObjArray[dataArray[0][j].toLowerCase()] = dataArray[i][j];
+        tempObj[dataArray[0][j].toLowerCase()] = dataArray[i][j];
     }
-    objectArray.push(tempObjArray);
+    objectArray.push(tempObj);
 }
 
 console.log("Part 3-");
@@ -106,7 +106,7 @@ for (let i = 0; i < firstRowArray.length; i++){
 }
 // console.log(`dataCSV: ${dataCSV}`);
 
-// Format data
+// Format data using objectArray
 for(let i = 0; i < objectArray.length; i++){
     let tempRowArray = [];
     for(const key in objectArray[i]){
