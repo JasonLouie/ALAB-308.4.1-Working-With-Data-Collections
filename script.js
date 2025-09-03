@@ -52,9 +52,7 @@ for (let i = 0; i < data.length; i++){
 }
 
 console.log("Part 2");
-for (const row of dataArray){
-    console.log(row);
-}
+console.log(dataArray);
 
 // Part 3: Transforming Data
 let objectArray = [];
@@ -88,7 +86,6 @@ objectArray.push({id: "7", name: "Bilbo", occupation: "None", age: "111"});
 let totalAge = 0;
 for (const row of objectArray){
     for (const key in row){
-        console.log(typeof key);
         if (key === "age"){
             totalAge += Number(row[key]);
         }
