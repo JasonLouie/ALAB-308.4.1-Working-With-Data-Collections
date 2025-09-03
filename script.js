@@ -126,7 +126,7 @@ for(let i = 0; i < objectArray.length; i++){
     for(const key in objectArray[i]){
         tempRowArray.push(objectArray[i][key]);
     }
-    dataCSV += (tempRowArray.join(",") + "\n");
+    dataCSV += (tempRowArray.join(",") + ((i == objectArray.length-1) ? "" : "\n"));
 }
 
 console.log(`Part 5\n${dataCSV}`);
