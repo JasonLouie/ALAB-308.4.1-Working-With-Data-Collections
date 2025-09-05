@@ -80,7 +80,7 @@ console.log(objectArray);
 // Part 4: Sorting and Manipulating Data
 
 // Remove last element
-objectArray.splice(-1, 1);
+objectArray.pop();
 
 // Insert at index 1
 objectArray.splice(1, 0, {id: "48", name: "Barry", occupation: "Runner", age: "25"});
