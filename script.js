@@ -1,16 +1,14 @@
 // Part 1: Refactor
 const data = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26"
 
-let header = "", cell1 = "", cell2 = "", cell3 = "", cell4 = "";
-
-let rowCount = 0, text = "";
+let header = "", cell1 = "", cell2 = "", cell3 = "", cell4 = "", text = "";
+let rowCount = 0;
 
 for (let i = 0; i < data.length; i++){
     if (data[i] == "\n"){ // Handle new row
         if (rowCount == 0) {
             header += text;
-        }
-        if (rowCount == 1) {
+        } else if (rowCount == 1) {
             cell1 += text;
         } else if (rowCount == 2) {
             cell2 += text;
@@ -30,27 +28,35 @@ for (let i = 0; i < data.length; i++){
 console.log(`Part 1\nHeader: ${header}\nCell 1: ${cell1}, \nCell 2: ${cell2}, \nCell 3: ${cell3}, \nCell 4: ${cell4}`);
 
 // Part 2: Expanding Functionality
-let dataArray = []; // All data
-let tempArray = []; // Row of data
-let dataText = "";
 
-for (let i = 0; i < data.length; i++){
-    // New line
-    if (data[i] == "\n"){
-        tempArray.push(dataText);
-        dataText = ""; // Reset dataText for new column
-        dataArray.push(tempArray);
-        tempArray = []; // Reset tempArray for new row
-    } else if (data[i] == ",") {
-        tempArray.push(dataText);
-        dataText = ""; // Reset dataText for new column
-    } else {
-        dataText += data[i];
-    }
-    if (i == data.length-1){ // Handle the end of reading data
-        tempArray.push(dataText); // Push last row's last column of data into tempArray
-        dataArray.push(tempArray); // Push last row's data into dataArray
-    }
+// Method 1: Without using the split operator:
+// let dataArray = []; // All data
+// let tempArray = []; // Row of data
+// let dataText = "";
+
+// for (let i = 0; i < data.length; i++){
+//     // New line
+//     if (data[i] == "\n"){
+//         tempArray.push(dataText);
+//         dataText = ""; // Reset dataText for new column
+//         dataArray.push(tempArray);
+//         tempArray = []; // Reset tempArray for new row
+//     } else if (data[i] == ",") {
+//         tempArray.push(dataText);
+//         dataText = ""; // Reset dataText for new column
+//     } else {
+//         dataText += data[i];
+//     }
+//     if (i == data.length-1){ // Handle the end of reading data
+//         tempArray.push(dataText); // Push last row's last column of data into tempArray
+//         dataArray.push(tempArray); // Push last row's data into dataArray
+//     }
+// }
+
+// Method 2: With the split operator:
+let dataArray = data.split("\n");
+for(let i = 0; i < dataArray.length; i++){
+    dataArray[i] = dataArray[i].split(",");
 }
 
 console.log("Part 2");
@@ -68,10 +74,8 @@ for(let i = 1; i < dataArray.length; i++){
 }
 
 console.log("Part 3");
-// Print by row to show current state of objectArray before any changes
-for (const row of objectArray){
-    console.log(row);
-}
+// Since objectArray itself is being spliced, results in the console may not be accurate.
+console.log(objectArray);
 
 // Part 4: Sorting and Manipulating Data
 
